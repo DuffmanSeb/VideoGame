@@ -1,16 +1,18 @@
 package game_engine;
 
-import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 public class GameContainer implements Runnable 
 {
 	private Thread thread;
 	private Window window;
 	private Renderer renderer;
+	private Input input;
 	
 	private boolean running = false;
-	private final double UPDATE_CAP = 1.0/60.0;
-	private int width = 1665, height = 971;
+	private final double UPDATE_CAP = 1.0/61.0;
+	private int width = 1666, height = 971;
 	private float scale = 1f;
 	private String title = "Attack Of The Lizatoids! Alpha v0.10";
 	
@@ -23,6 +25,7 @@ public class GameContainer implements Runnable
     {
     	window = new Window(this);
     	renderer = new Renderer(this);
+    	input = new Input(this);
     	
     	thread = new Thread(this);
     	thread.run();
@@ -64,6 +67,10 @@ public class GameContainer implements Runnable
     			render = true;
     			
     			//TODO: Update game
+    			System.out.println("x1" + input.getMousex() + " y1" + input.getMousey());
+
+    			input.update();
+    			
     			if(frameTime >= 1.0)
     			{
     				frameTime = 0;

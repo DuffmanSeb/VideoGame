@@ -40,6 +40,10 @@ public class Window
 		g = bs.getDrawGraphics();
 	}
 	
+	public JFrame getFrame() {
+		return frame;
+	}
+
 	public void update()
 	{
 		g.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), null);
